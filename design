@@ -1,0 +1,59 @@
+title : FLATMATE
+Description: its an app that gets an input the amount of a period and the days that each of the flatmates stayed in the house for the period and returns how much each flatmate has to pay , it also generate a Pdf report
+Object:
+       BIll:
+           AMOUNT
+           PERIOD
+       FLATMATE:
+           Name
+           Days in house
+           PAYS ()
+       PDFReport:
+           Filename
+           Save(flatmate1,flatmate2,bill)
+
+
+
+
+
+
+
+
+
+
+
+BILL.PY FUCNTION
+This Python code defines classes to calculate and report bill splits between flatmates.
+Classes and Their Responsibilities:
+Bill:
+Represents a utility bill.
+__init__(self, amount, period): Initializes a Bill object with the total amount of the bill and the period it covers (e.g., "March 2021").
+Flatmate:
+Represents a person living in the flat.
+__init__(self, name, days_in_house): Initializes a Flatmate object with their name and the days_in_house they stayed during the bill period.
+pays(self, Bill, flatmate2): This method calculates how much a specific flatmate (self) should pay for a given Bill, considering the days they and flatmate2 were in the house.
+It calculates a weight based on the proportion of days self was in the house compared to the total days self and flatmate2 were in the house.
+It then multiplies the Bill.amount by this weight to determine the amount self needs to pay.
+Pdfreport:
+Intended to generate a PDF report (currently a placeholder).
+__init__(self, filename): Initializes a Pdfreport object with the desired filename for the report.
+genrate(self, flatmate1, flatmate2, Bill): This method is meant to generate the PDF report, taking the two flatmates and the bill as input. As of now, it contains pass, meaning it does nothing.
+Program Flow:
+Object Instantiation:
+A Bill object is created with an amount of 128 and a period of "March 2021".
+Two Flatmate objects are created: john (20 days) and marry (25 days).
+Bill Calculation:
+john.pays(Bill=Bill, flatmate2=marry): Calculates how much John should pay.
+John's days: 20
+Marry's days: 25
+Total relevant days: 20 + 25 = 45
+John's weight: 20 / 45
+John's payment: 128 * (20 / 45)
+marry.pays(Bill=Bill, flatmate2=john): Calculates how much Marry should pay.
+Marry's days: 25
+John's days: 20
+Total relevant days: 25 + 20 = 45
+Marry's weight: 25 / 45
+Marry's payment: 128 * (25 / 45)
+Output:
+The calculated payment amounts for John and Marry are printed to the console.
